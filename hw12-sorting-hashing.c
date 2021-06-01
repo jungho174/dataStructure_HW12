@@ -48,6 +48,8 @@ int main()
 
 	srand(time(NULL));
 
+	printf("[------------- [조정호] [2020039032] -------------]");
+
 	do{
 		printf("----------------------------------------------------------------\n");
 		printf("                        Sorting & Hashing                       \n");
@@ -138,16 +140,16 @@ int initialize(int** a)
 	return 0;
 }
 
-int freeArray(int *a)
+int freeArray(int *a) //array메모리 할당 해제
 {
 	if(a != NULL)
 		free(a);
 	return 0;
 }
 
-void printArray(int *a)
+void printArray(int *a) //array 출력함수
 {
-	if (a == NULL) {
+	if (a == NULL) { // array가 비어있는경우
 		printf("nothing to print.\n");
 		return;
 	}
@@ -160,7 +162,7 @@ void printArray(int *a)
 }
 
 
-int selectionSort(int *a)
+int selectionSort(int *a) // 선택정렬
 {
 	int min;
 	int minindex;
@@ -169,17 +171,17 @@ int selectionSort(int *a)
 	printf("Selection Sort: \n");
 	printf("----------------------------------------------------------------\n");
 
-	printArray(a);
+	printArray(a); //선택정렬 이전 출력
 
 	for (i = 0; i < MAX_ARRAY_SIZE; i++)
 	{
-		minindex = i;
-		min = a[i];
+		minindex = i; 
+		min = a[i]; //최소값
 		for(j = i+1; j < MAX_ARRAY_SIZE; j++)
 		{
 			if (min > a[j])
 			{
-				min = a[j];
+				min = a[j]; //남은 것 중 최소값을 앞에 배치
 				minindex = j;
 			}
 		}
@@ -188,24 +190,24 @@ int selectionSort(int *a)
 	}
 
 	printf("----------------------------------------------------------------\n");
-	printArray(a);
+	printArray(a); //선택정렬 이후 출력
 	return 0;
 }
 
-int insertionSort(int *a)
+int insertionSort(int *a) // 삽입정렬
 {
 	int i, j, t;
 
 	printf("Insertion Sort: \n");
 	printf("----------------------------------------------------------------\n");
 
-	printArray(a);
+	printArray(a); // 삽입정렬 이전 출력
 
-	for(i = 1; i < MAX_ARRAY_SIZE; i++)
+	for(i = 1; i < MAX_ARRAY_SIZE; i++) //앞에서부터 비교
 	{
 		t = a[i];
 		j = i;
-		while (a[j-1] > t && j > 0)
+		while (a[j-1] > t && j > 0) //앞과 뒤를 비교해서 맞는 자리 판단해서 삽입
 		{
 			a[j] = a[j-1];
 			j--;
@@ -214,7 +216,7 @@ int insertionSort(int *a)
 	}
 
 	printf("----------------------------------------------------------------\n");
-	printArray(a);
+	printArray(a); // 삽입정렬 이후 출력
 
 	return 0;
 }
