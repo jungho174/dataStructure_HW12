@@ -221,7 +221,7 @@ int insertionSort(int *a) // 삽입정렬
 	return 0;
 }
 
-int bubbleSort(int *a)
+int bubbleSort(int *a) // 버블정렬
 {
 	int i, j, t;
 
@@ -230,14 +230,14 @@ int bubbleSort(int *a)
 
 	printArray(a);
 
-	for(i = 0; i < MAX_ARRAY_SIZE; i++)
+	for(i = 0; i < MAX_ARRAY_SIZE; i++) //앞에서부터 차례로
 	{
-		for (j = 0; j < MAX_ARRAY_SIZE; j++)
+		for (j = 0; j < MAX_ARRAY_SIZE; j++) 
 		{
-			if (a[j-1] > a[j])
+			if (a[j-1] > a[j]) //붙어있는 두 원소를 비교해서 크기순서가 아니면 
 			{
 				t = a[j-1];
-				a[j-1] = a[j];
+				a[j-1] = a[j]; // 서로 교체
 				a[j] = t;
 			}
 		}
@@ -258,13 +258,13 @@ int shellSort(int *a)
 
 	printArray(a);
 
-	for (h = MAX_ARRAY_SIZE/2; h > 0; h /= 2)
+	for (h = MAX_ARRAY_SIZE/2; h > 0; h /= 2) // 부분리스트. gap설정
 	{
-		for (i = 0; i < h; i++)
+		for (i = 0; i < h; i++) 
 		{
-			for(j = i + h; j < MAX_ARRAY_SIZE; j += h)
+			for(j = i + h; j < MAX_ARRAY_SIZE; j += h)  //부분리스트에 삽입정렬
 			{
-				v = a[j];
+				v = a[j];// 
 				k = j;
 				while (k > h-1 && a[k-h] > v)
 				{
@@ -281,14 +281,14 @@ int shellSort(int *a)
 	return 0;
 }
 
-int quickSort(int *a, int n)
+int quickSort(int *a, int n) //퀵정렬
 {
 	int v, t;
 	int i, j;
 
 	if (n > 1)
 	{
-		v = a[n-1];
+		v = a[n-1]; //피벗
 		i = -1;
 		j = n - 1;
 
@@ -306,7 +306,7 @@ int quickSort(int *a, int n)
 		a[i] = a[n-1];
 		a[n-1] = t;
 
-		quickSort(a, i);
+		quickSort(a, i); // 피벗 기준으로 분할된 배열을 다시 퀵정렬
 		quickSort(a+i+1, n-i-1);
 	}
 
