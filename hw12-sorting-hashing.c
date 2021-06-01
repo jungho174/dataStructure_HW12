@@ -371,10 +371,10 @@ int hashing(int *a, int **ht)
 
 int search(int *ht, int key)
 {
-	int index = hashCode(key);
+	int index = hashCode(key); // 키를 해시값으로
 
 	if(ht[index] == key)
-		return index;
+		return index; //키값과 같은 값 발견시 검색끝
 
 	while(ht[++index] != key)
 	{
@@ -382,6 +382,3 @@ int search(int *ht, int key)
 	}
 	return index;
 }
-
-
-
